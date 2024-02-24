@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-// import styles from "./page.module.css";
 import WebGL from "three/examples/jsm/capabilities/WebGL.js";
 import Cube from "./cube";
 
