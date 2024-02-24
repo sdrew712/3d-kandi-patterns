@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 // import styles from "./page.module.css";
 import WebGL from "three/examples/jsm/capabilities/WebGL.js";
 import Cube from "./cube";
@@ -13,8 +13,11 @@ export default function Home() {
         document.body.appendChild(warning);
       }
     }
-    if (typeof window !== "undefined") {
-      Cube();
-    }
   }, []);
+
+  return (
+    <div>
+      <Cube />
+    </div>
+  );
 }
