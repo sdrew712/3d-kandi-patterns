@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import WebGL from "three/examples/jsm/capabilities/WebGL.js";
-import Cube from "./cube";
+import Excision from "./Excision";
 
 export default function Home() {
   useEffect(() => {
@@ -14,9 +14,5 @@ export default function Home() {
     }
   }, []);
 
-  return (
-    <div>
-      <Cube />
-    </div>
-  );
+  return <Excision />;
 }
