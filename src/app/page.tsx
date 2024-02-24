@@ -1,34 +1,20 @@
 "use client";
 import React, { useRef, useEffect } from "react";
-import styles from "./page.module.css";
-import * as THREE from "three";
+// import styles from "./page.module.css";
+import WebGL from "three/examples/jsm/capabilities/WebGL.js";
+import Cube from "./cube";
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
+    if (!WebGL.isWebGLAvailable()) {
+      const warning = WebGL.getWebGLErrorMessage();
+      warning.id = "webgl-error-message";
+      if (document.getElementById("webgl-error-message") === null) {
+        document.body.appendChild(warning);
+      }
+    }
     if (typeof window !== "undefined") {
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      containerRef.current?.appendChild(renderer.domElement);
-      camera.position.z = 5;
-
-      const geometry = new THREE.BoxGeometry();
-      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-      const cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
-
-      // Render the scene and camera
-      renderer.render(scene, camera);
+      Cube();
     }
   }, []);
-
-  return <div ref={containerRef} />;
 }
