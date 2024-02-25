@@ -68,7 +68,6 @@ function MainSide() {
       <Square x={7} y={-2} color="#05E6FA" />
       <Square x={9} y={-2} color="#D288FF" />
 
-      {/* its a spiral */}
       <Square x={-14} y={-4} color="#D288FF" />
       <Square x={-12} y={-4} color="#05E6FA" />
       <Square x={-10} y={-4} color="#05E6FA" />

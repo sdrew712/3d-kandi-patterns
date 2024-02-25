@@ -8,10 +8,10 @@ export default function Navigation() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href="/orbit">About</Link>
+          <Link href="/orbit">Orbit</Link>
         </li>
         <li>
-          <Link href="/excision">Contact</Link>
+          <Link href="/excision">Excision</Link>
         </li>
       </ul>
     </nav>

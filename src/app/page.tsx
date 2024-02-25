@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import WebGL from "three/examples/jsm/capabilities/WebGL.js";
-import Orbit from "./orbit/page";
+import Navigation from "./Navigation";
 
 export default function Home() {
   useEffect(() => {
@@ -14,5 +14,5 @@ export default function Home() {
     }
   }, []);
 
-  return <Orbit />;
+  return <Navigation />;
 }
