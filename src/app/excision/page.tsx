@@ -1,5 +1,7 @@
+"use client";
+
 import * as THREE from "three";
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import { Canvas } from "@react-three/fiber";
 
 export default function Excision() {

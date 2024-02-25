@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import WebGL from "three/examples/jsm/capabilities/WebGL.js";
-import Orbit from "./Orbit";
+import Orbit from "./orbit/page";
 
 export default function Home() {
   useEffect(() => {
