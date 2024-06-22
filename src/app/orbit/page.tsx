@@ -1,9 +1,9 @@
 "use client";
 
-import * as THREE from "three";
 import styles from "../page.module.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import Square from "../Square";
 
 export default function Orbit() {
   return (
@@ -17,9 +17,63 @@ export default function Orbit() {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         {/* orbit */}
-        <MainSide />
+        {/* <MainSide /> */}
+        <Side />
       </Canvas>
     </div>
+  );
+}
+
+function Side() {
+  return (
+    <>
+      <Square x={0} y={0} color="#05E6FA" />
+      <Square x={6} y={0} color="#05E6FA" />
+      <Square x={8} y={0} color="#D288FF" />
+      <Square x={14} y={0} color="#05E6FA" />
+      <Square x={16} y={0} color="#05E6FA" />
+      <Square x={0} y={-2} color="#05E6FA" />
+      <Square x={2} y={-2} color="#D288FF" />
+      <Square x={4} y={-2} color="#D288FF" />
+      <Square x={6} y={-2} color="#05E6FA" />
+      <Square x={8} y={-2} color="#D288FF" />
+      <Square x={10} y={-2} color="#D288FF" />
+      <Square x={12} y={-2} color="#D288FF" />
+      <Square x={14} y={-2} color="#05E6FA" />
+      <Square x={16} y={-2} color="#05E6FA" />
+      <Square x={0} y={-4} color="#05E6FA" />
+      <Square x={2} y={-4} color="#D288FF" />
+      <Square x={4} y={-4} color="#D288FF" />
+      <Square x={6} y={-4} color="#05E6FA" />
+      <Square x={8} y={-4} color="#D288FF" />
+      <Square x={10} y={-4} color="#D288FF" />
+      <Square x={12} y={-4} color="#D288FF" />
+      <Square x={14} y={-4} color="#05E6FA" />
+      <Square x={16} y={-4} color="#05E6FA" />
+      <Square x={0} y={-6} color="#05E6FA" />
+      <Square x={2} y={-6} color="#D288FF" />
+      <Square x={4} y={-6} color="#D288FF" />
+      <Square x={6} y={-6} color="#05E6FA" />
+      <Square x={8} y={-6} color="#D288FF" />
+      <Square x={10} y={-6} color="#D288FF" />
+      <Square x={12} y={-6} color="#D288FF" />
+      <Square x={14} y={-6} color="#05E6FA" />
+      <Square x={16} y={-6} color="#05E6FA" />
+      <Square x={0} y={-8} color="#05E6FA" />
+      <Square x={2} y={-8} color="#D288FF" />
+      <Square x={4} y={-8} color="#D288FF" />
+      <Square x={6} y={-8} color="#05E6FA" />
+      <Square x={8} y={-8} color="#D288FF" />
+      <Square x={10} y={-8} color="#D288FF" />
+      <Square x={12} y={-8} color="#D288FF" />
+      <Square x={14} y={-8} color="#05E6FA" />
+      <Square x={16} y={-8} color="#05E6FA" />
+      <Square x={0} y={-10} color="#05E6FA" />
+      <Square x={6} y={-10} color="#05E6FA" />
+      <Square x={8} y={-10} color="#D288FF" />
+      <Square x={14} y={-10} color="#05E6FA" />
+      <Square x={16} y={-10} color="#05E6FA" />
+    </>
   );
 }
 
@@ -286,27 +340,6 @@ function MainSide() {
 
       <Square x={0} y={-32} color="#D288FF" />
       <Square x={2} y={-32} color="#D288FF" />
-    </>
-  );
-}
-
-function Square({ x, y, color }: { x: number; y: number; color: string }) {
-  const positionArray: [x: number, y: number, z: number] = [x, y, 0];
-
-  return (
-    <>
-      <mesh position={positionArray}>
-        <boxGeometry args={[2, 2, 2]} />
-        <meshStandardMaterial color={color} />
-
-        <lineSegments>
-          <edgesGeometry
-            attach="geometry"
-            args={[new THREE.BoxGeometry(2, 2, 2)]}
-          />
-          <lineBasicMaterial attach="material" color="black" />
-        </lineSegments>
-      </mesh>
     </>
   );
 }
