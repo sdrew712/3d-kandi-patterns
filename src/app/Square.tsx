@@ -16,7 +16,10 @@ export default function Square({
 
   if (!color) {
     return (
-      <mesh position={positionArray}>
+      <mesh
+        position={positionArray}
+        onClick={() => handleClickedMesh(positionArray)}
+      >
         <lineSegments>
           <edgesGeometry
             attach="geometry"

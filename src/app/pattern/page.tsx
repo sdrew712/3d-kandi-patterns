@@ -3,7 +3,7 @@
 import styles from "../page.module.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Excision from "../../sample-patterns/excision.json";
+import { Excision } from "../../sample-patterns/excision";
 import { renderPattern } from "@/utils/renderPattern";
 
 export default function Pattern() {
