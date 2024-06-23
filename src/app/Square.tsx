@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { handleClickedMesh } from "@/utils/handleClickedMesh";
 
 export default function Square({
   x,
@@ -28,7 +29,10 @@ export default function Square({
   }
 
   return (
-    <mesh position={positionArray}>
+    <mesh
+      position={positionArray}
+      onClick={() => handleClickedMesh(positionArray)}
+    >
       <boxGeometry args={[2, 2, 2]} />
       <meshStandardMaterial color={color} />
 
