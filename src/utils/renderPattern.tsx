@@ -5,6 +5,7 @@ export function renderPattern(pattern: Pattern) {
     <>
       {pattern.map((element) => (
         <Square
+          key={`${element.x} ${element.y} ${element.z}`}
           x={element.x}
           y={element.y}
           z={element.z ?? 0}
