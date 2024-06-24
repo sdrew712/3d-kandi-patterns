@@ -1,12 +1,13 @@
 import { Grid } from "@/app/Grid";
 import Square from "@/app/Square";
 import { Pattern } from "@/types";
+
 export function renderPattern(pattern: Pattern) {
   return (
     <>
       {pattern.map((plane) =>
         plane.beads.map((bead) => (
-          <>
+          <mesh layers={pattern.length}>
             <Grid plane={plane} />
             <Square
               key={`${bead.x} ${bead.y} ${bead.z}`}
@@ -15,7 +16,7 @@ export function renderPattern(pattern: Pattern) {
               z={bead.z ?? 0}
               color={bead.color}
             />
-          </>
+          </mesh>
         ))
       )}
     </>
