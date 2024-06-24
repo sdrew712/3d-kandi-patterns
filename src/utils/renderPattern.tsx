@@ -5,13 +5,13 @@ export function renderPattern(pattern: Pattern) {
     <>
       <Grid pattern={pattern} />
 
-      {pattern.map((element) => (
+      {pattern.map((plane) => (
         <Square
-          key={`${element.x} ${element.y} ${element.z}`}
-          x={element.x}
-          y={element.y}
-          z={element.z ?? 0}
-          color={element.color}
+          key={`${plane.x} ${plane.y} ${plane.z}`}
+          x={plane.x}
+          y={plane.y}
+          z={plane.z ?? 0}
+          color={plane.color}
         />
       ))}
     </>
