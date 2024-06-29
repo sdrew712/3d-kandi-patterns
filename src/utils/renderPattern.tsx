@@ -8,7 +8,7 @@ export function renderPattern(pattern: Pattern) {
     <mesh layers={pattern.length}>
       {pattern.map((plane) =>
         plane.beads.map((bead) => (
-          <group>
+          <group key={`${bead.x} ${bead.y} ${bead.z}`}>
             <Grid plane={plane} />
             <Square
               key={`${bead.x} ${bead.y} ${bead.z}`}
