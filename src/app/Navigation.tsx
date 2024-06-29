@@ -11,7 +11,7 @@ export default function Navigation() {
           <Link href="/orbit">Orbit</Link>
         </li>
         <li>
-          <Link href="/excision">Excision</Link>
+          <Link href="/pattern">Pattern</Link>
         </li>
       </ul>
     </nav>
