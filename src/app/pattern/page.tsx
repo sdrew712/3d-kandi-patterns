@@ -14,7 +14,7 @@ export default function Pattern() {
           position: [0, 0, 35],
         }}
       >
-        <OrbitControls />;
+        <OrbitControls />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         {renderPattern(Excision)}
