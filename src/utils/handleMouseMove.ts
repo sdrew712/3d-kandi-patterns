@@ -16,11 +16,12 @@ export function handleMouseMove({
 }) {
   const intersects = e.intersections;
   intersects.forEach((intersection) => {
-    const coords = intersection.point.floor();
+    const coords = intersection.point;
+
     setPosition({
-      x: coords.x,
-      y: coords.y,
-      z: coords.z,
+      x: coords.x > 0 ? Math.floor(coords.x) : Math.ceil(coords.x),
+      y: coords.y > 0 ? Math.floor(coords.y) : Math.ceil(coords.y),
+      z: coords.z > 0 ? Math.floor(coords.z) : Math.ceil(coords.z),
     });
   });
 }
