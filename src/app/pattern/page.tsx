@@ -3,8 +3,8 @@
 import styles from "../page.module.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { ExcisionV2 } from "../../sample-patterns/excisionV2";
-import { renderPatternV2 } from "@/utils/renderPatternV2";
+import { Excision } from "../../sample-patterns/excision";
+import { renderPattern } from "@/utils/renderPattern";
 
 export default function Pattern() {
   return (
@@ -17,7 +17,7 @@ export default function Pattern() {
         <OrbitControls />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        {renderPatternV2(ExcisionV2)}
+        {renderPattern(Excision)}
       </Canvas>
     </div>
   );

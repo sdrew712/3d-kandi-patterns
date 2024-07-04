@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { handleClickedMesh } from "@/utils/handleClickedMesh";
 
 export default function Square({
   x,
@@ -7,42 +6,25 @@ export default function Square({
   z = 0,
   color,
 }: {
-  x: number;
-  y: number;
-  z?: number;
-  color?: string;
+  x: number | null;
+  y: number | null;
+  z: number | null;
+  color: string;
 }) {
+  if (x === null || y === null || z === null) return null;
+
   const positionArray: [x: number, y: number, z: number] = [x, y, z];
 
-  if (!color) {
-    return (
-      <mesh
-        position={positionArray}
-        onClick={() => handleClickedMesh(positionArray)}
-      >
-        <lineSegments>
-          <edgesGeometry
-            attach="geometry"
-            args={[new THREE.BoxGeometry(2, 2, 2)]}
-          />
-          <lineBasicMaterial attach="material" color="gray" />
-        </lineSegments>
-      </mesh>
-    );
-  }
-
   return (
-    <mesh
-      position={positionArray}
-      onClick={() => handleClickedMesh(positionArray)}
-    >
-      <boxGeometry args={[2, 2, 2]} />
+    <mesh position={positionArray}>
+      <boxGeometry args={[1, 1, 1]} />
+
       <meshStandardMaterial color={color} />
 
       <lineSegments>
         <edgesGeometry
           attach="geometry"
-          args={[new THREE.BoxGeometry(2, 2, 2)]}
+          args={[new THREE.BoxGeometry(1, 1, 1)]}
         />
         <lineBasicMaterial attach="material" color="gray" />
       </lineSegments>

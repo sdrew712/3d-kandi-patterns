@@ -8,9 +8,6 @@ export default function Navigation() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href="/orbit">Orbit</Link>
-        </li>
-        <li>
           <Link href="/pattern">Pattern</Link>
         </li>
       </ul>
