@@ -5,7 +5,7 @@ import { Pattern } from "@/types";
 import { handleMouseMove } from "@/utils/handleMouseMove";
 
 export function renderPattern(pattern: Pattern) {
-  const [position, setPosition] = useState<{
+  const [mousePosition, setMousePosition] = useState<{
     x: number | null;
     y: number | null;
     z: number | null;
@@ -20,7 +20,7 @@ export function renderPattern(pattern: Pattern) {
   return (
     <mesh
       layers={pattern.length}
-      onPointerMove={(e) => handleMouseMove({ e, setPosition })}
+      onPointerMove={(e) => handleMouseMove({ e, setMousePosition })}
     >
       {pattern.map((plane) =>
         plane.beads.map((bead) => (
@@ -46,9 +46,9 @@ export function renderPattern(pattern: Pattern) {
         position={new THREE.Vector3(0.5, 0.5, -0.5)}
       />
       <Square
-        x={currentPlane.x ?? position.x}
-        y={currentPlane.y ?? position.y}
-        z={currentPlane.z ?? position.z}
+        x={currentPlane.x ?? mousePosition.x}
+        y={currentPlane.y ?? mousePosition.y}
+        z={currentPlane.z ?? mousePosition.z}
         color="#cbdcf7"
       />
     </mesh>
