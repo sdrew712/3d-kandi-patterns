@@ -11,6 +11,12 @@ export function renderPatternV2(pattern: Pattern) {
     z: number | null;
   }>({ x: null, y: null, z: null });
 
+  const [currentPlane, setCurrentPlane] = useState<{
+    x: number | null;
+    y: number | null;
+    z: number | null;
+  }>({ x: null, y: null, z: 0 });
+
   return (
     <mesh
       layers={pattern.length}
@@ -39,14 +45,12 @@ export function renderPatternV2(pattern: Pattern) {
         rotation={new THREE.Euler(Math.PI / 2, 0, 0)}
         position={new THREE.Vector3(0.5, 0.5, -0.5)}
       />
-      {position.x !== null && position.y !== null && position.z !== null && (
-        <SquareV2
-          x={position.x}
-          y={position.y}
-          z={position.z}
-          color="#cbdcf7"
-        />
-      )}
+      <SquareV2
+        x={currentPlane.x ?? position.x}
+        y={currentPlane.y ?? position.y}
+        z={currentPlane.z ?? position.z}
+        color="#cbdcf7"
+      />
     </mesh>
   );
 }

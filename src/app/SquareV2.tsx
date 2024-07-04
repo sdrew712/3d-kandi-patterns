@@ -7,11 +7,13 @@ export default function Square({
   z = 0,
   color,
 }: {
-  x: number;
-  y: number;
-  z?: number;
+  x: number | null;
+  y: number | null;
+  z: number | null;
   color: string;
 }) {
+  if (x === null || y === null || z === null) return null;
+
   const positionArray: [x: number, y: number, z: number] = [x, y, z];
 
   return (
