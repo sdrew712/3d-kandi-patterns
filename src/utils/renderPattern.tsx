@@ -3,8 +3,11 @@ import * as THREE from "three";
 import Square from "@/app/Square";
 import { Pattern } from "@/types";
 import { handleMouseMove } from "@/utils/handleMouseMove";
+import { useAddPatternSquare } from "@/utils/useAddPatternSquare";
+import { changeColor } from "@/utils/changeColor";
 
 export function renderPattern(pattern: Pattern) {
+  const { addPatternSquare } = useAddPatternSquare({ pattern });
   const [mousePosition, setMousePosition] = useState<{
     x: number | null;
     y: number | null;
@@ -17,14 +20,55 @@ export function renderPattern(pattern: Pattern) {
     z: number | null;
   }>({ x: null, y: null, z: 0 });
 
+  let shouldDisplayPositionSquare = true;
+
+  pattern.forEach((plane) => {
+    if (
+      plane.beads.some(
+        (bead) => bead.x === mousePosition.x && bead.y === mousePosition.y
+      )
+    ) {
+      shouldDisplayPositionSquare = false;
+    }
+  });
+
   return (
     <mesh
       layers={pattern.length}
       onPointerMove={(e) => handleMouseMove({ e, setMousePosition })}
+      onClick={() => {
+        addPatternSquare({
+          coordinates: mousePosition,
+          color: "#3c32a8",
+        });
+      }}
     >
       {pattern.map((plane) =>
-        plane.beads.map((bead) => (
-          <group key={`${bead.x} ${bead.y} ${bead.z}`}>
+        plane.beads.map((bead) => {
+          if (!shouldDisplayPositionSquare) {
+            if (bead.x === mousePosition.x && bead.y === mousePosition.y) {
+              return (
+                <Square
+                  key={`${bead.x} ${bead.y} ${bead.z}`}
+                  x={bead.x}
+                  y={bead.y}
+                  z={bead.z ?? 0}
+                  color={changeColor(1, bead.color) || ""}
+                />
+              );
+            }
+
+            return (
+              <Square
+                key={`${bead.x} ${bead.y} ${bead.z}`}
+                x={bead.x}
+                y={bead.y}
+                z={bead.z ?? 0}
+                color={bead.color}
+              />
+            );
+          }
+          return (
             <Square
               key={`${bead.x} ${bead.y} ${bead.z}`}
               x={bead.x}
@@ -32,8 +76,8 @@ export function renderPattern(pattern: Pattern) {
               z={bead.z ?? 0}
               color={bead.color}
             />
-          </group>
-        ))
+          );
+        })
       )}
       <gridHelper
         args={[50, 50, 0xff0000, "gray"]}
@@ -45,12 +89,14 @@ export function renderPattern(pattern: Pattern) {
         rotation={new THREE.Euler(Math.PI / 2, 0, 0)}
         position={new THREE.Vector3(0.5, 0.5, -0.5)}
       />
-      <Square
-        x={currentPlane.x ?? mousePosition.x}
-        y={currentPlane.y ?? mousePosition.y}
-        z={currentPlane.z ?? mousePosition.z}
-        color="#cbdcf7"
-      />
+      {shouldDisplayPositionSquare && (
+        <Square
+          x={currentPlane.x ?? mousePosition.x}
+          y={currentPlane.y ?? mousePosition.y}
+          z={currentPlane.z ?? mousePosition.z}
+          color="#cbdcf7"
+        />
+      )}
     </mesh>
   );
 }
